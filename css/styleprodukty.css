@@ -1,0 +1,168 @@
+.accordion-button {
+    padding: 10px 20px;
+    border-radius: 0;
+}
+
+.accordion-body {
+    padding: 10px;
+}
+
+/* Content */
+.card {
+    border: none;
+    transition: box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    margin-bottom: 1rem;
+}
+
+.card-footer {
+    padding: 0;
+    background-color: transparent;
+}
+
+.btn-primary {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.btn-primary:hover {
+    background-color: #3f3f3f;
+    border-color: #3f3f3f;
+}
+
+.btn-light {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.btn-light:hover {
+    background-color: #e2e6ea;
+    border-color: #d3d9df;
+}
+
+/* Footer */
+footer {
+    padding: 20px 0;
+    background-color: #f8f9fa;
+}
+/*mine*/
+
+.hoverelementfoot {
+    text-decoration: none;
+    position: relative;
+    color: white; /* Dodaj kolor tekstu */
+}
+
+.hoverelementfoot::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -1px;
+    background-color: #fff; /* Zmieniamy kolor podkreślenia na biały */
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.hoverelementfoot:hover::after {
+    transform: scaleX(1);
+}
+.square {
+    position: relative;
+}
+.nav-link:focus {
+    outline: none; /* Usunięcie outline po kliknięciu */
+}
+.outlinehover:hover {
+    outline: 2px solid black; /* Domyślny kolor to czarny */
+}
+.square img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: filter 0.3s ease; /* Dodajemy efekt przejścia */
+}
+
+/* Po najechaniu myszką zmieniamy filtr na ciemniejszy */
+.square:hover img {
+    filter: brightness(60%);
+}
+
+/* Stylowanie dla napisu */
+.square .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: x-large;
+    text-align: center;
+    opacity: 0; /* Napis domyślnie jest niewidoczny */
+    transition: opacity 0.3s ease; /* Dodajemy efekt przejścia */
+}
+
+/* Po najechaniu myszką na kwadrat, napis staje się widoczny */
+.square:hover .text {
+    opacity: 1;
+}
+.rubik-mono {
+    font-family: "Rubik Mono One", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+.testfont {
+    font-family: "Rubik Scribble", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+.exofont {
+    font-family: "Exo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+.oswald-font {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    }
+.lilita-one-regular {
+    font-family: "Lilita One", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    }
+.rubik-doodle {
+    font-family: "Rubik Doodle Shadow", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    }
+.urbanist {
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    }
+
+
+.content-next {
+    display: inline-block; /* Wyświetla elementy obok siebie */
+    margin: 0 10px; /* Dodaje odstęp między elementami */
+}

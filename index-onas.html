@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sklep Tøj</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            .square {
+                position: relative;
+            }
+            .nav-link:focus {
+                outline: none; /* Usunięcie outline po kliknięciu */
+            }
+            .outlinehover:hover {
+                outline: 2px solid black; /* Domyślny kolor to czarny */
+            }
+            .square img {
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: filter 0.3s ease; /* Dodajemy efekt przejścia */
+            }
+        
+            /* Po najechaniu myszką zmieniamy filtr na ciemniejszy */
+            .square:hover img {
+                filter: brightness(60%);
+            }
+        
+            /* Stylowanie dla napisu */
+            .square .text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: x-large;
+                text-align: center;
+                opacity: 0; /* Napis domyślnie jest niewidoczny */
+                transition: opacity 0.3s ease; /* Dodajemy efekt przejścia */
+            }
+        
+            /* Po najechaniu myszką na kwadrat, napis staje się widoczny */
+            .square:hover .text {
+                opacity: 1;
+            }
+        </style>
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Tøj</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" ><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="index-onas.html">O nas</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">Sklep</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#!">Wszystkie produkty</a></li>
+                                <li><a class="dropdown-item" href="#!">Ona</a></li>
+                                <li><a class="dropdown-item" href="#!">On</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Popularne</a></li>
+                                <li><a class="dropdown-item" href="#!">Nowości</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark mx-2" type="submit">
+                            <i class="bi-heart-fill me-1"></i>
+                            Ulubione
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                        <button class="btn btn-outline-dark mx-2" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Koszyk
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                        <button class="btn outlinehover" type="submit">
+                            <i class="bi-person-fill me-1"></i>
+                            Logowanie
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header -->
+        <header class="bg-black py-1">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Tøj</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Kim jesteśmy?</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+            <div class="container-fluid  my-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="src/photo1.jpg" class="img-fluid" alt="Responsive image">
+                        
+                    </div>
+
+                    <div class="col-md-6">
+                        <p class="text-center"><h3>Lorem</h3> ipsum dolor sit amet, consectetur adipiscing elit. Nulla dictum feugiat augue, ac aliquet eros molestie et. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget blandit nunc, malesuada ultrices neque. Etiam faucibus justo sit amet ullamcorper tincidunt. Etiam euismod sapien pulvinar, lacinia augue vel, bibendum leo. Proin convallis vestibulum felis eu porta. Nullam non neque sed arcu dictum malesuada ac at lacus. Aenean ac magna ornare, viverra lacus sed, aliquet tellus. Aliquam luctus facilisis sapien, ut blandit tortor faucibus at. Pellentesque laoreet ut tellus eget malesuada.
+                            Quisque cursus nibh turpis, id porttitor urna eleifend et. Aenean aliquam ultricies neque, nec ultricies augue.</p> Cras venenatis mauris vel varius aliquam. Proin dapibus purus at massa rutrum sagittis. In sed dapibus dui. Sed a nulla in quam malesuada iaculis. Nam id bibendum ante. Sed finibus eget dui eu pharetra.
+                            Curabitur consectetur fringilla hendrerit. Etiam hendrerit odio vel sapien eleifend, eget varius est rutrum. Aliquam mi mi, mollis at tincidunt id, pharetra vitae mi. Nullam pharetra velit sit amet mi tincidunt, eget congue augue blandit. Quisque lacinia malesuada cursus. Pellentesque luctus erat quis nisl vulputate rhoncus. Fusce tempor eros sit amet tellus lobortis vulputate. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque sit amet mauris eu urna dictum dapibus tempus quis lacus. Donec nec porttitor tellus. Etiam vel faucibus mi. Pellentesque pretium id nisl eu varius. Aenean aliquam ultricies neque, nec ultricies augue. Cras venenatis mauris vel varius aliquam. Proin dapibus purus at massa rutrum.
+                        
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-black">
+            <div class="container"><p class="m-0 text-center text-white">Jankowski &copy;</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

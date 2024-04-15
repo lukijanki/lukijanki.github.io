@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sklep Tøj</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Exo:ital,wght@0,100..900;1,100..900&family=Lilita+One&family=Oswald:wght@200..700&family=Rubik+Doodle+Shadow&family=Rubik+Maps&family=Rubik+Mono+One&family=Rubik+Scribble&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <style>
+            .accordion-button {
+                padding: 10px 20px;
+                border-radius: 0;
+            }
+
+            .accordion-body {
+                padding: 10px;
+            }
+
+            /* Content */
+            .card {
+                border: none;
+                transition: box-shadow 0.3s;
+            }
+
+            .card:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .card-img-top {
+                height: 200px;
+                object-fit: cover;
+            }
+
+            .card-title {
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+
+            .card-text {
+                margin-bottom: 1rem;
+            }
+
+            .card-footer {
+                padding: 0;
+                background-color: transparent;
+            }
+
+            .btn-primary {
+                background-color: #000000;
+                border-color: #000000;
+            }
+
+            .btn-primary:hover {
+                background-color: #3f3f3f;
+                border-color: #3f3f3f;
+            }
+
+            .btn-light {
+                background-color: #f8f9fa;
+                border-color: #dee2e6;
+            }
+
+            .btn-light:hover {
+                background-color: #e2e6ea;
+                border-color: #d3d9df;
+            }
+
+            /* Footer */
+            footer {
+                padding: 20px 0;
+                background-color: #f8f9fa;
+            }
+            /*mine*/
+
+            .hoverelementfoot {
+                text-decoration: none;
+                position: relative;
+                color: white; /* Dodaj kolor tekstu */
+            }
+
+            .hoverelementfoot::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                bottom: -1px;
+                background-color: #fff; /* Zmieniamy kolor podkreślenia na biały */
+                left: 0;
+                transform: scaleX(0);
+                transition: transform 0.3s ease;
+            }
+
+            .hoverelementfoot:hover::after {
+                transform: scaleX(1);
+            }
+            .square {
+                position: relative;
+            }
+            .nav-link:focus {
+                outline: none; /* Usunięcie outline po kliknięciu */
+            }
+            .outlinehover:hover {
+                outline: 2px solid black; /* Domyślny kolor to czarny */
+            }
+            .square img {
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: filter 0.3s ease; /* Dodajemy efekt przejścia */
+            }
+        
+            /* Po najechaniu myszką zmieniamy filtr na ciemniejszy */
+            .square:hover img {
+                filter: brightness(60%);
+            }
+        
+            /* Stylowanie dla napisu */
+            .square .text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                font-size: x-large;
+                text-align: center;
+                opacity: 0; /* Napis domyślnie jest niewidoczny */
+                transition: opacity 0.3s ease; /* Dodajemy efekt przejścia */
+            }
+        
+            /* Po najechaniu myszką na kwadrat, napis staje się widoczny */
+            .square:hover .text {
+                opacity: 1;
+            }
+            .rubik-mono {
+                font-family: "Rubik Mono One", monospace;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .testfont {
+                font-family: "Rubik Scribble", system-ui;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .exofont {
+                font-family: "Exo", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 500;
+                font-style: normal;
+            }
+            .oswald-font {
+                font-family: "Oswald", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 500;
+                font-style: normal;
+                }
+            .lilita-one-regular {
+                font-family: "Lilita One", sans-serif;
+                font-weight: 100;
+                font-style: normal;
+                }
+            .rubik-doodle {
+                font-family: "Rubik Doodle Shadow", system-ui;
+                font-weight: 400;
+                font-style: normal;
+                }
+            .urbanist {
+                font-family: "Urbanist", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 300;
+                font-style: normal;
+                }
+
+
+            .content-next {
+                display: inline-block; /* Wyświetla elementy obok siebie */
+                margin: 0 10px; /* Dodaje odstęp między elementami */
+            }
+            .color-option {
+              width: 15px;
+              height: 15px;
+              margin-right: 5px;
+              cursor: pointer;
+              border: #000000;
+              border: solid;
+              border-width: 1px;
+            }
+            .color-options {
+              margin-top: 3px;
+              margin-bottom: 3px;
+              display: flex;
+              flex-wrap: nowrap;
+
+            }
+            .card-text {
+              margin-bottom: 0.2em;
+            }
+            .card {
+              width: 20em;
+            }
+            .card-img-top {
+              width: 100%;
+              height: 15vw;
+              object-fit: cover;
+            }
+            .page-item.active .page-link {
+              background-color: #000000; /* Tutaj możesz wpisać wybrany kolor */
+              color: #ffffff; /* Opcjonalnie możesz też zmienić kolor tekstu */
+              border-color: #000000;
+            }
+            .btn-check:checked + .btn {
+              background-color: black;
+              color: white;
+            }
+            .form-check-input:checked{
+              background-color: #000000;
+              border-color: #000000;
+            }
+            .approve:hover {
+              background-color: #000000;
+              border-color: #000000;
+              color: #ffffff;
+            }
+            .accordion-item .list-unstyled li a {
+              text-decoration: none; /* Usunięcie domyślnego podkreślenia */
+            }
+
+          .accordion-item .list-unstyled li a:hover {
+            text-decoration: underline; /* Podkreślenie po najechaniu kursorem */
+          }
+          .color {
+            width: 34px;
+            height: 17px;
+            margin-right: 5px;
+            margin-top: 3px;
+            cursor: pointer;
+            border: #000000;
+            border: solid;
+            border-width: 1px;
+          }
+
+          .form-select:focus {
+            outline: none;
+            box-shadow: none;
+          }
+          a {
+            text-decoration: none !important;
+          }
+          input {
+            outline: none;
+            box-shadow: none;
+
+          }
+
+    </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand testfont" href="index.html">Tøj</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" ><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link exofont" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link exofont" href="index-onas.html">O nas</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active exofont" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">Sklep</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#!">Wszystkie produkty</a></li>
+                                <li><a class="dropdown-item" href="produktallona.html">Ona</a></li>
+                                <li><a class="dropdown-item" href="produktyall.html">On</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Popularne</a></li>
+                                <li><a class="dropdown-item" href="#!">Nowości</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                      <input type="text" class="bg-transparent mx-2" style="border-bottom: 0.5; border-left: 0; border-right: 0; border-top: 0; height: 2em; margin-top: 1%;" placeholder="Wyszukaj..." aria-label="Wyszukaj" disabled>
+
+                        <button class="btn btn-outline-dark mx-2 urbanis" type="submit">
+                            <i class="bi-heart-fill me-1"></i>
+                            Ulubione
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                        <button class="btn btn-outline-dark mx-2" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Koszyk
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                        <button class="btn outlinehover " type="submit">
+                            <i class="bi-person-fill me-1"></i>
+                            Logowanie
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header -->
+        <header class="bg-black py-1">
+            <div class="container px-2 px-lg-6 my-2">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder testfont">Tøj</h1>
+                    <p class="lead fw-normal text-white-50 mb-0 rubik-mono">Życie na betonowych falach</p>
+                </div>
+                <div class="container  lilita-one-regular px-2 px-lg-6 my-2 header-content d-flex justify-content-between align-items-center" style="color: rgb(160, 152, 96); opacity: 90%;">
+                    <div class="left-content content-next">Wysłka w 24h</div>
+                    <div class="center-content content-next">Najnowsze produkty</div>
+                    <div class="right-content content-next">Najlepsze ceny</div>
+                </div>
+                
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                  <!-- sidebar -->
+                  <div class="col-lg-3"><h4 class="mb-3" style="font-weight: bold; color: #333;">Filtrowanie:</h4>
+
+                    <!-- Collapsible wrapper -->
+                    <div class="collapse card d-lg-block mb-2" id="navbarSupportedContent">
+                      <div class="accordion" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button
+                                    class="btn text-dark bg-white mb-1 collapsed"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#panelsStayOpen-collapseOne"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseOne"
+                                    >
+                              Kategorie
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                            <div class="accordion-body">
+                              <ul class="list-unstyled">
+                                <li><a href="#" class="text-dark">Odzież </a></li>
+                                <li><a href="#" class="text-dark">Obuwie </a></li>
+                                <li><a href="#" class="text-dark">Akcesoria </a></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                            <button
+                                    class="btn text-dark bg-white mb-1"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#panelsStayOpen-collapseTwo"
+                                    aria-expanded="true"
+                                    aria-controls="panelsStayOpen-collapseTwo"
+                                    >
+                              Marka
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
+                            <div class="accordion-body">
+                              <div>
+                                <!-- Checked checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked1" checked />
+                                  <label class="form-check-label" for="flexCheckChecked1">Adidas</label>
+                                  <span class="badge badge-secondary float-end">120</span>
+                                </div>
+                                <!-- Checked checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" checked />
+                                  <label class="form-check-label" for="flexCheckChecked2">Carhartt WIP</label>
+                                  <span class="badge badge-secondary float-end">15</span>
+                                </div>
+                                <!-- Checked checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="" checked />
+                                  <label class="form-check-label" for="flexCheckChecked3">Dime</label>
+                                  <span class="badge badge-secondary float-end">35</span>
+                                </div>
+                                <!-- Checked checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked4" checked />
+                                  <label class="form-check-label" for="flexCheckChecked4">Nike</label>
+                                  <span class="badge badge-secondary float-end">89</span>
+                                </div>
+                                <!-- Default checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" />
+                                  <label class="form-check-label" for="flexCheckDefault1">Polar</label>
+                                  <span class="badge badge-secondary float-end">30</span>
+                                </div>
+                                <!-- Default checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" checked/>
+                                  <label class="form-check-label" for="flexCheckDefault2">Patagonia</label>
+                                  <span class="badge badge-secondary float-end">30</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingThree">
+                            <button
+                                    class="btn text-dark bg-white mb-1"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#panelsStayOpen-collapseThree"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseThree"
+                                    >
+                              Cena
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                            <div class="accordion-body">
+                              <div class="range">
+                                
+                              </div>
+                              <div class="row mb-3">
+                                <div class="col-6">
+                                  <p class="mb-0">
+                                    Min
+                                  </p>
+                                  <div class="form-outline">
+                                    <input type="number" id="typeNumber" class="form-control" />
+                                    <label class="form-label" for="typeNumber">0 zł</label>
+                                  </div>
+                                </div>
+                                <div class="col-6">
+                                  <p class="mb-0">
+                                    Max
+                                  </p>
+                                  <div class="form-outline">
+                                    <input type="number" id="typeNumber" class="form-control" />
+                                    <label class="form-label" for="typeNumber">1,000 zł</label>
+                                  </div>
+                                </div>
+                              </div>
+                              <button type="button" class="btn btn-white w-100 border border-secondary approve">Zatwierdź</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingFour">
+                            <button
+                                    class="btn text-dark bg-white mb-1"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#panelsStayOpen-collapseFour"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseFour"
+                                    >
+                              Rozmiar
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                            <div class="accordion-body">
+                                <input type="checkbox" class="btn-check border justify-content-center" id="btn-check1" autocomplete="off" />
+                                <label class="btn btn-white mb-1 px-1" style="width: 60px; border-color: #000000;" for="btn-check1">S</label>
+                                <input type="checkbox" class="btn-check border justify-content-center" id="btn-check2" autocomplete="off" />
+                                <label class="btn btn-white mb-1 px-1" style="width: 60px; border-color: #000000;" for="btn-check2">M</label>
+                                <input type="checkbox" class="btn-check border justify-content-center" id="btn-check3" autocomplete="off" />
+                                <label class="btn btn-white mb-1 px-1" style="width: 60px; border-color: #000000;" for="btn-check3">L</label>
+                                <input type="checkbox" class="btn-check border justify-content-center" id="btn-check4" autocomplete="off" />
+                                <label class="btn btn-white mb-1 px-1" style="width: 60px; border-color: #000000;" for="btn-check4">XXL</label>
+                            </div>
+                        </div>
+                        
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingFive">
+                            <button
+                                    class="btn text-dark bg-white mb-1"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#panelsStayOpen-collapseFive"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseFive"
+                                    >
+                              Materiał
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
+                            <div class="accordion-body">
+                              <!-- Default checkbox -->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" checked />
+                                <label class="form-check-label" for="flexCheckDefault1">
+                                  Bawełna
+                                </label>
+                              </div>
+                              <!-- Default checkbox -->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" checked />
+                                <label class="form-check-label" for="flexCheckDefault2">
+                                  Poliester
+                                </label>
+                              </div>
+                              <!-- Default checkbox -->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3" checked />
+                                <label class="form-check-label" for="flexCheckDefault3">
+                                 Polar
+                                </label>
+                              </div>
+                              <!-- Default checkbox -->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4" checked />
+                                <label class="form-check-label" for="flexCheckDefault4">
+                                 Denim
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4" checked />
+                                <label class="form-check-label" for="flexCheckDefault4">
+                                 Pozostałe
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingSix">
+                            <button
+                                    class="btn text-dark bg-white mb-1"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#panelsStayOpen-collapseSix"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseSix"
+                                    >
+                              Kolor
+                            </button>
+                          </h2>
+                          <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix">
+                            <div class="accordion-body">
+                              <!-- Default checkbox -->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" checked />
+                                <label class="form-check-label" for="flexCheckDefault1">
+                                  <div class="color" style="background-color: rgb(0, 0, 0);"></div>
+                                </label>
+                              </div>
+                              <!-- Default checkbox -->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2" checked />
+                                <label class="form-check-label" for="flexCheckDefault2">
+                                  <div class="color" style="background-color: rgb(255, 255, 255);"></div>
+                                </label>
+                              </div>
+                              <!-- Default checkbox -->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3" checked />
+                                <label class="form-check-label" for="flexCheckDefault3">
+                                  <div class="color" style="background-color: blue;"></div>
+                                </label>
+                              </div>
+                              <!-- Default checkbox -->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4" checked />
+                                <label class="form-check-label" for="flexCheckDefault4">
+                                  <div class="color" style="background-color: green;"></div>
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4" checked />
+                                <label class="form-check-label" for="flexCheckDefault4">
+                                  <div class="color" style="background-color: yellow;"></div>
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4" checked />
+                                <label class="form-check-label" for="flexCheckDefault4">
+                                  <div class="color" style="background-color: red;"></div>
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4" checked />
+                                <label class="form-check-label" for="flexCheckDefault4">
+                                  <div class="color" style="background-color: grey;"></div>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- sidebar -->
+                  <!-- content -->
+                  <div class="col-lg-9">
+                    <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
+                      
+                      <div class="ms-auto">
+                        <select class="form-select d-inline-block w-auto border pt-1">
+                          <option value="0">Najnowsze</option>
+                          <option value="1">Najtańsze</option>
+                          <option value="2">Najdroższe</option>
+                          <option value="3">Przecenione</option>
+                        </select>
+          
+                      </div>
+                    </header>
+            
+                    <div class="row">
+                      <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
+                        <div class="card  my-2 shadow-2-strong">
+                          <img src="src/ubrania/Mens-Home-Water-Trout-Organic-T-Shirt,-kolor-White.jpg" class="card-img-top" width=""/>
+                          <div class="card-body d-flex flex-column">
+                            <div class="d-flex flex-row">
+                              <h5 class="mb-1 me-1">130 zł</h5>
+                              <span class="text-danger"><s>150 zł</s></span>
+                            </div>
+                            <p class="card-text oswald-font">Patagonia</p>
+                            <p class="info">T-shirt</p>
+                            <div class="color-and-size-options d-flex justify-content-between">
+                              <div class="color-options me-2">
+                                  <div class="color-option" style="background-color: rgb(255, 255, 255);"></div>
+                                  <div class="color-option" style="background-color: red;"></div>
+                                  <div class="color-option" style="background-color: green;"></div>
+                                  <!-- Dodaj więcej kolorów według potrzeb -->
+                              </div>
+                              <div class="size-options">
+                                  <span class="size-option">S</span>
+                                  <span class="size-option">M</span>
+                                  <span class="size-option">L</span>
+                                  <!-- Dodaj więcej rozmiarów według potrzeb -->
+                              </div>
+                          </div>
+                            <div class="card-footer d-flex align-items-xenter pt-3 px-0 pb-0 mt-auto">
+                              <a href="#!" class="btn btn-primary shadow-0 me-1">Dodaj do koszyka</a>
+                              <a href="#!" class="btn btn-primary shadow-0 me-1"><i class="fas fa-heart"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
+                        <a href="produktpage.html"><div class="card  my-2 shadow-2-strong">
+                          <img src="src/tee2.png" class="card-img-top" style="width: 80%; text-align: center; margin-left: 15%;"/>
+                          <div class="card-body d-flex flex-column">
+                            <div class="d-flex flex-row">
+                              <h5 class="mb-1 me-1">120 zł</h5>
+                            </div>
+                            <p class="card-text oswald-font">Carhartt WIP</p>
+                            <p class="info">T-shirt</p>
+                            <div class="color-and-size-options d-flex justify-content-between">
+                              <div class="color-options me-2">
+                                <div class="color-option" style="background-color: blue;"></div>
+                                <div class="color-option" style="background-color: rgb(0, 0, 0);"></div>
+                              </div>
+                              <div class="size-options">
+                                  <span class="size-option">S</span>
+                                  <span class="size-option">M</span>
+                                  <span class="size-option">L</span>
+                                  <!-- Dodaj więcej rozmiarów według potrzeb -->
+                              </div>
+                          </div>
+                            <div class="card-footer d-flex align-items-xenter pt-3 px-0 pb-0 mt-auto">
+                              <a href="#!" class="btn btn-primary shadow-0 me-1">Dodaj do koszyka</a>
+                              <a href="#!" class="btn btn-primary shadow-0 me-1"><i class="fas fa-heart"></i></a>
+                            </div>
+                          </div>
+                        </div></a>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
+                        <div class="card  my-2 shadow-2-strong">
+                          <img src="src/ubrania/bluzanikeeeee.jpeg" class="card-img-top" />
+                          <div class="card-body d-flex flex-column">
+                            <div class="d-flex flex-row">
+                              <h5 class="mb-1 me-1">180 zł</h5>
+                              <span class="text-danger"><s>250 zł</s></span>
+                            </div>
+                            <p class="card-text oswald-font">Nike</p>
+                            <p class="info">Hoodie</p>
+                            <div class="color-and-size-options d-flex justify-content-between">
+                              <div class="color-options me-2">
+                                  <div class="color-option" style="background-color: blue;"></div>
+                              </div>
+                              <div class="size-options">
+                                  <span class="size-option">L</span>
+                              </div>
+                          </div>
+                            <div class="card-footer d-flex align-items-xenter pt-3 px-0 pb-0 mt-auto">
+                              <a href="#!" class="btn btn-primary shadow-0 me-1">Dodaj do koszyka</a>
+                              <a href="#!" class="btn btn-primary shadow-0 me-1"><i class="fas fa-heart"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
+                        <div class="card  my-2 shadow-2-strong">
+                          <img src="src/ubrania/kurtka.jpeg" class="card-img-top width-50%" style="width: 80%; text-align: center; margin-left: 15%;" />
+                          <div class="card-body d-flex flex-column">
+                            <div class="d-flex flex-row">
+                              <h5 class="mb-1 me-1">270 zł</h5>
+                            </div>
+                            <p class="card-text oswald-font">Adidas</p>
+                            <p class="info">Kurtka</p>
+                            <div class="color-and-size-options d-flex justify-content-between">
+                              <div class="color-options me-2">
+                                  <div class="color-option" style="background-color: rgb(0, 0, 0);"></div>
+                                  <!-- Dodaj więcej kolorów według potrzeb -->
+                              </div>
+                              <div class="size-options">
+                                  <span class="size-option">S</span>
+                                  <span class="size-option">M</span>
+                                  <span class="size-option">L</span>
+                                  <!-- Dodaj więcej rozmiarów według potrzeb -->
+                              </div>
+                          </div>
+                            <div class="card-footer d-flex align-items-xenter pt-3 px-0 pb-0 mt-auto">
+                              <a href="#!" class="btn btn-primary shadow-0 me-1">Dodaj do koszyka</a>
+                              <a href="#!" class="btn btn-primary shadow-0 me-1"><i class="fas fa-heart"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
+                        <div class="card  my-2 shadow-2-strong">
+                          <img src="src/ubrania/dime.jpeg" class="card-img-top" style="width: 80%; text-align: center; margin-left: 15%;"/>
+                          <div class="card-body d-flex flex-column">
+                            <div class="d-flex flex-row">
+                              <h5 class="mb-1 me-1">430 zł</h5>
+                            </div>
+                            <p class="card-text oswald-font">Dime</p>
+                            <p class="info">Hoodie</p>
+                            <div class="color-and-size-options d-flex justify-content-between">
+                              <div class="color-options me-2">
+                                  <div class="color-option" style="background-color: blue;"></div>
+                                  <div class="color-option" style="background-color: green;"></div>
+                                  <!-- Dodaj więcej kolorów według potrzeb -->
+                              </div>
+                              <div class="size-options">
+                                  <span class="size-option">S</span>
+                                  <span class="size-option">M</span>
+                                  <span class="size-option">L</span>
+                                  <!-- Dodaj więcej rozmiarów według potrzeb -->
+                              </div>
+                          </div>
+                            <div class="card-footer d-flex align-items-xenter pt-3 px-0 pb-0 mt-auto">
+                              <a href="#!" class="btn btn-primary shadow-0 me-1">Dodaj do koszyka</a>
+                              <a href="#!" class="btn btn-primary shadow-0 me-1"><i class="fas fa-heart"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-sm-6 d-flex">
+                        <div class="card  my-2 shadow-2-strong">
+                          <img src="src/ubrania/SPODNIECAR.jpeg" class="card-img-top" style="width: 75%; text-align: center; margin-left: 15%;"/>
+                          <div class="card-body d-flex flex-column">
+                            <div class="d-flex flex-row">
+                              <h5 class="mb-1 me-1">160 zł</h5>
+                              <span class="text-danger"><s>220 zł</s></span>
+                            </div>
+                            <p class="card-text oswald-font">Carhartt WIP</p>
+                            <p class="info">Spodnie</p>
+                            <div class="color-and-size-options d-flex justify-content-between">
+                              <div class="color-options me-2">
+                                  <div class="color-option" style="background-color: blue;"></div>
+
+                                  <!-- Dodaj więcej kolorów według potrzeb -->
+                              </div>
+                              <div class="size-options">
+
+                                  <span class="size-option">M</span>
+                                  <span class="size-option">L</span>
+                                  <!-- Dodaj więcej rozmiarów według potrzeb -->
+                              </div>
+                          </div>
+                            <div class="card-footer d-flex align-items-xenter pt-3 px-0 pb-0 mt-auto">
+                              <a href="#!" class="btn btn-primary shadow-0 me-1">Dodaj do koszyka</a>
+                              <a href="#!" class="btn btn-primary shadow-0 me-1"><i class="fas fa-heart"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+            
+                    <!-- Pagination -->
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center mt-5">
+                        <li class="page-item disabled">
+                          <a class="page-link" href="#" tabindex="-1" aria-disabled="false">Poprzednia</a>
+                        </li>
+                        <li class="page-item active" aria-current="page">
+                          <a class="page-link" href="#">1 <span class="sr-only"></span></a>
+                        </li>
+                        <li class="page-item disabled"><a class="page-link" href="#" aria-disabled="true">2</a></li>
+                        <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link disabled" href="#">Następna</a>
+                        </li>
+                      </ul>
+                    </nav>
+                    <!-- Pagination -->
+                  </div>
+                  <!-- content -->
+                </div>
+              </div>
+          
+        </section>
+        
+        <!-- Footer-->
+        <footer
+          class="text-center text-lg-start text-white"
+          style="background-color: #000000"
+          >
+    <!-- Grid container -->
+    <div class="container-fluid">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h3 class="text-uppercase mb-4  testfont">
+                Tøj
+            </h3>
+            <p>
+                W dzikim tchnieniu betonowego lasu, nasz sklep zaprasza do odkrywania ulicznej duszy – gdzie miejski styl spotyka się z naturą, tworząc niepowtarzalne unikaty dla Twojej osobowości!
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Pomoc</h6>
+            <p>
+              <a class="text-white hoverelementfoot">Zwrot</a>
+            </p>
+            <p>
+              <a class="text-white hoverelementfoot">Reklamacje</a>
+            </p>
+            <p>
+              <a class="text-white hoverelementfoot">Zamówienia</a>
+            </p>
+            <p>
+              <a class="text-white hoverelementfoot">Płatnośċ</a>
+            </p>
+            <p>
+                <a class="text-white hoverelementfoot">Dostawa</a>
+              </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              Przydatne linki
+            </h6>
+            <p>
+              <a class="text-white hoverelementfoot">Twoje konto</a>
+            </p>
+            <p>
+              <a class="text-white hoverelementfoot">Formularz kontaktowy</a>
+            </p>
+            <p>
+              <a class="text-white hoverelementfoot">Polityka prywatności</a>
+            </p>
+            <p>
+              <a class="text-white hoverelementfoot">Regulamin</a>
+            </p>
+          </div>
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Kontakt</h6>
+            <p><i class="fa-solid fa-house mr-3"></i> ul. Tkacka 7, <br>&nbsp&nbsp&nbsp&nbsp&nbspSzczecin 70-452</p>
+            <p><i class="fas fa-envelope mr-3"></i> info@toj.pl</p>
+            <p><i class="fas fa-phone mr-3"></i> +48 543 324 754</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+
+      <hr class="my-3">
+
+      <!-- Section: Copyright -->
+      <section class="p-3 pt-0">
+        <div class="row d-flex align-items-center">
+          <!-- Grid column -->
+          <div class="col-md-7 col-lg-8 text-center text-md-start">
+            <!-- Copyright -->
+            <div class="p-3">
+              © 2024 Copyright: Tøj by Jankowksi
+            </div>
+            <!-- Copyright -->
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+            <!-- Facebook -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-facebook-f"></i
+              ></a>
+
+
+            <!-- Instagram -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-instagram"></i
+              ></a>
+          </div>
+          <!-- Grid column -->
+        </div>
+      </section>
+
+    </div>
+    <!-- Grid container -->
+  </footer>
+        <!-- Bootstrap core JS-->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://kit.fontawesome.com/60447694b7.js" crossorigin="anonymous"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              const buttons = document.querySelectorAll('[data-toggle="collapse"]');
+              buttons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                  const targetId = this.getAttribute("data-target");
+                  const target = document.querySelector(targetId);
+                  target.classList.toggle("show");
+                });
+              });
+            });
+        </script>
+          
+
+    </body>
+</html>
